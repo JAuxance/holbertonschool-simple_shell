@@ -13,11 +13,11 @@ int main(void)
 
 	while (1)
 	{
-		write(1, "$ - ", 4);
+		write(1, "$ ", 2);
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
 		{
-			printf("Error reading line\n");
+			printf("Exit\n");
 			free(buffer);
 			return (1);
 		}
