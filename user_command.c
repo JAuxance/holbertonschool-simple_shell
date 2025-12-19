@@ -13,9 +13,11 @@ int main(void)
     size_t n = 0;
     char *buffer = NULL;
     ssize_t read;
-    char *command;
+    char *token;
+    char *args[1024];
     pid_t pid;
     int is_interactive = isatty(STDIN_FILENO);
+    int i;
 
     while (1)
     {
@@ -35,20 +37,28 @@ int main(void)
         }
 
         /* extract first words*/
-        command = strtok(buffer, " ");
-        if (command == NULL)
+        i = 0;
+        token = strtok(buffer, " ");
+        if (token != NULL && i < 1023)
+        {
+            args[i] = token;
+            i++;
+            token = strtok(NULL, " ");
+        }
+        args[i] = NULL;
+
+        if(args[0] == NULL)
         {
             continue;
         }
+        {
 
         pid = fork();
         if (pid == 0)
         {
-            char *args[2];
-            args[0] = command;
-            args[1] = NULL;
-            execvp(command, args);
-            perror(command);
+            
+            execvp(args[0], args);
+            perror(args[0]);
             exit(1);
         }
         else
@@ -59,4 +69,5 @@ int main(void)
 
     free(buffer);
     return (0);
+    }
 }
