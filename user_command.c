@@ -15,6 +15,7 @@ int main(void)
     ssize_t read;
     char *command;
     pid_t pid;
+    int is_interactive = isatty(STDIN_FILENO);
 
     while (1)
     {
