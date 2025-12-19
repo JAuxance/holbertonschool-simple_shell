@@ -19,7 +19,11 @@ int main(void)
 
     while (1)
     {
-        write(1, "$ ", 2);
+        if (is_interactive)
+        {
+            write(1, "$ ", 2);
+        }
+        (1, "$ ", 2);
         read = getline(&buffer, &n, stdin);
         if (read == -1)
         {
