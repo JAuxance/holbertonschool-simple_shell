@@ -23,7 +23,6 @@ int main(void)
         {
             write(1, "$ ", 2);
         }
-        (1, "$ ", 2);
         read = getline(&buffer, &n, stdin);
         if (read == -1)
         {
@@ -41,7 +40,6 @@ int main(void)
         {
             continue;
         }
-
 
         pid = fork();
         if (pid == 0)
