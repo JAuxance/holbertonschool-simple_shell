@@ -38,13 +38,13 @@ int main(void)
             continue;
         }
 
-        write(1, command, strlen(command));
-        write(1, "\n", 1);
 
         pid = fork();
         if (pid == 0)
         {
-            char *args[] = {command, NULL};
+            char *args[2];
+            args[0] = command;
+            args[1] = NULL;
             execvp(command, args);
             perror(command);
             exit(1);
@@ -53,8 +53,8 @@ int main(void)
         {
             wait(NULL);
         }
-
-        free(buffer);
-        return (0);
     }
+
+    free(buffer);
+    return (0);
 }
