@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/wait.h>
 
 /*int main(int ac, char **av);*/
 #endif /* MAIN.H */
