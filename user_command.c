@@ -23,7 +23,6 @@ int main(void)
         read = getline(&buffer, &n, stdin);
         if (read == -1)
         {
-            printf("Exit\n");
             free(buffer);
             return (1);
         }
