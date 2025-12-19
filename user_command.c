@@ -27,7 +27,7 @@ int main(void)
         if (read == -1)
         {
             free(buffer);
-            return (1);
+            return (0);
         }
         if (buffer[read - 1] == '\n')
         {
