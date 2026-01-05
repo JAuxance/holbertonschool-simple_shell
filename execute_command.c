@@ -1,37 +1,30 @@
 #include "main.h"
 /**
- * execute_command - executes a command using fork and execvp
- * @args: array of arguments for the command
- * Return: 0 on success
- */
+* execute_command - executes a command using fork and execvp
+* @args: array of arguments for the command
+* Return: 0 on success
+*/
 
 int execute_command(char *args[])
 {
-	pid_t pid;
-	int wstatus;
+	pid_t pid; /* init PID */
+	int status;
 
-	pid = fork();
+	pid = fork(); /* Duplicate Pid for creat an child*/
 	if (pid < 0)
 	{
-		perror("fork");
-		return (1);
+		perror("Fork failed");
+		return (-1);
 	}
-
-	if (pid == 0)
+	else if (pid == 0) /* if fork return success*/
 	{
-		execve(args[0], args, environ);
-		perror(args[0]);
-		_exit(127);
+		execvp(args[0], args); /* Execute command in new child*/
+		perror(args[0]);	   /* if execvp fail print error*/
+		exit(1);			   /* exit child creat by fork*/
 	}
-
-	if (waitpid(pid, &wstatus, 0) < 0)
+	else
 	{
-		perror("waitpid");
-		return (1);
+		waitpid(pid, &status, 0); /* waiting child is over */
 	}
-
-	if (WIFEXITED(wstatus))
-		return (WEXITSTATUS(wstatus));
-
-	return (1);
+	return (0); /* return success */
 }
