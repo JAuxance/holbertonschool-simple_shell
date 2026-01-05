@@ -11,8 +11,8 @@
 int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive)
 {
 	ssize_t nread;
-	/**  char *token; */
-	/**  int i = 0; */
+	char *token;
+	int i = 0;
 
 	if (is_interactive)
 	{
@@ -21,16 +21,22 @@ int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive)
 	nread = getline(buffer, n, stdin);
 
 	if (nread == -1)
+	{
 		return (-1); /* EOF */
+	}
 
-	/**  (*buffer)[nread - 1] = '\0'; /* Remove newline */
-if ((*buffer)[nread - 1] == '\n')
-{
-	(*buffer)[nread - 1] = '\0';
-}
+	if ((*buffer)[nread - 1] == '\n')
+	{
+		(*buffer)[nread - 1] = '\0';
+	}
 
-args[0] = *buffer;
-args[1] = NULL;
+	token = strtok(*buffer, " \t");
+	while (token != NULL && i < 1023)
+	{
+		args[i++] = token;
+		token = strtok(NULL, " \t");
+	}
+	args[i] = NULL;
 
-return (args[0][0] == '\0' ? 0 : 1);
+	return (args[0] == NULL ? 0 : 1);
 }

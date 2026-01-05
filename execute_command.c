@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * execute_command - executes a command using fork and execvp
- * @args: array of arguments for the command
- * Return: 0 on success
- */
+* execute_command - executes a command using fork and execvp
+* @args: array of arguments for the command
+* Return: 0 on success
+*/
 
 int execute_command(char *args[])
 {
@@ -19,10 +19,8 @@ int execute_command(char *args[])
 	else if (pid == 0) /* if fork return success*/
 	{
 		execvp(args[0], args); /* Execute command in new child*/
-		/* if execvp fail print error*/
-		write(STDERR_FILENO, args[0], strlen(args[0]));
-		write(STDERR_FILENO, ": One arguments authorized \n", 29);
-		exit(127); /* exit child creat by fork*/
+		perror(args[0]);	   /* if execvp fail print error*/
+		exit(1);			   /* exit child creat by fork*/
 	}
 	else
 	{
