@@ -10,6 +10,7 @@ char *find_command_in_path(char *command)
     char *path_env, *path_copy, *dir;
     char *full_path;
     size_t len;
+    int i;
 
     if (command == NULL || *command == '\0')
         return NULL;
@@ -22,7 +23,16 @@ char *find_command_in_path(char *command)
         return NULL;
     }
 
-    path_env = getenv("PATH");
+    path_env = NULL;
+    for (i = 0; environ[i] != NULL; i++)
+    {
+        if (strncmp(environ[i], "PATH=", 5) == 0)
+        {
+            path_env = environ[i] + 5;
+            break;
+        }
+    }
+
     if (path_env == NULL || *path_env == '\0')
         return NULL;
 
