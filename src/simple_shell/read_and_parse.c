@@ -13,6 +13,7 @@ int read_and_pars(char **buffer, size_t *n, char *args[], int *is_interactive)
 {
 	ssize_t read; /* init READ */
 	char *token;  /* init TOKEN */
+	int i;
 
 	if (is_interactive)
 	{
@@ -29,7 +30,7 @@ int read_and_pars(char **buffer, size_t *n, char *args[], int *is_interactive)
 		(*buffer)[read - 1] = '\0';
 	}
 
-	int i = 0; /* new index */
+	i = 0; /* new index */
 
 	token = strtok(*buffer, " "); /* parse first element in buffer*/
 	while (token != NULL && i < 1023) /* parse rest of elements */

@@ -26,16 +26,7 @@ int main(void)
 	}
 	free(buffer); /* free buffer before exiting */
 	return (0);
-}
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-int main(void)
-{
 	pid_t pid = fork();
 
 	if (pid == 0)
