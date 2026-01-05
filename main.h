@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <stdio.h>
+
 int read_and_pars(char **buffer, size_t *n, char *args[], int *is_interactive);
 int execute_command(char *args[]);
 
