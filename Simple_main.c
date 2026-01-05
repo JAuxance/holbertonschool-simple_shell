@@ -1,8 +1,9 @@
 #include "main.h"
-
 /**
-main - entry point for the shell
-Return: 0 on success*/
+ * main - simple shell main loop
+ * Return: 0 on success
+ */
+
 int main(void)
 {
 	size_t n = 0;
@@ -10,6 +11,7 @@ int main(void)
 	char *args[1024];
 	int is_interactive = isatty(STDIN_FILENO);
 	int r;
+	char *cmd_path;
 
 	while (1)
 	{
@@ -29,6 +31,16 @@ int main(void)
 		if (args[0] == NULL)
 			continue;
 
-		execute_command(args);
+		cmd_path = find_command_in_path(args[0]);
+		if (cmd_path != NULL)
+		{
+			args[0] = cmd_path;
+			execute_command(args);
+			free(cmd_path);
+		}
+		else
+		{
+			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+		}
 	}
 }
