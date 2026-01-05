@@ -8,17 +8,25 @@
 int execute_command(char *args[])
 {
 	pid_t pid; /* init PID */
+	int status;
 
 	pid = fork(); /* Duplicate Pid for creat an child*/
-	if (pid == 0) /* if fork return success*/
+	if (pid < 0)
+	{
+		perror("Fork failed");
+		return (-1);
+	}
+	else if (pid == 0) /* if fork return success*/
 	{
 		execvp(args[0], args); /* Execute command in new child*/
-		perror(args[0]);	   /* if execvp fail print error*/
-		exit(1);			   /* exit child creat by fork*/
+		/* if execvp fail print error*/
+		write(STDERR_FILENO, args[0], strlen(args[0]));
+		write(STDERR_FILENO, ": One arguments authorized \n", 29);
+		exit(127); /* exit child creat by fork*/
 	}
 	else
 	{
-		wait(NULL); /* waiting child is over */
+		waitpid(pid, &status, 0); /* waiting child is over */
 	}
 	return (0); /* return success */
 }

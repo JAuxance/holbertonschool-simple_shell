@@ -1,46 +1,34 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
- * main - entry point for the shell
- *
- * Return: 0 on success
- */
+main - entry point for the shell
+Return: 0 on success*/
 int main(void)
 {
 	size_t n = 0;
 	char *buffer = NULL;
 	char *args[1024];
 	int is_interactive = isatty(STDIN_FILENO);
+	int r;
 
-	while (1) /* loop works */
+	while (1)
 	{
-		if (!read_and_parse(&buffer, &n, args, is_interactive))
+		r = read_and_parse(&buffer, &n, args, is_interactive);
+
+		if (r == -1) /* EOF (Ctrl+D)*/
 		{
-			free(buffer); /* if r_n_p == Null, free buffer and return 0*/
+			free(buffer);
 			return (0);
 		}
-		if (args[0] == NULL) /* if first value of array args is null continue*/
+
+		/*If you decide read_and_pars can return 0 on error*/
+		if (r == 0)
 			continue;
-		execute_command(args); /* execute command with args array */
-	}
-	free(buffer); /* free buffer before exiting */
-	return (0);
+		/*Skip empty lines*/
 
-	pid_t pid = fork();
+		if (args[0] == NULL)
+			continue;
 
-	if (pid == 0)
-	{
-		char *args[] = {"/tmp/ls -l", NULL};
-
-		execve("/bin/ls", args, NULL);
-		perror("execve failed");
-		exit(1);
-	}
-	else
-		wait(NULL);
-	pid = fork();
-	if (pid == 0)
-	{
+		execute_command(args);
 	}
 }
