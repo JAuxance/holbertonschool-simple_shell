@@ -10,6 +10,7 @@
 
 int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive);
 int execute_command(char *args[]);
+char *find_command_in_path(char *command);
 
 extern char **environ;
 
