@@ -12,6 +12,7 @@ int main(void)
 	int is_interactive = isatty(STDIN_FILENO);
 	int r;
 	char *cmd_path;
+	int last_exit_code = 0;
 
 	while (1)
 	{
@@ -20,7 +21,7 @@ int main(void)
 		if (r == -1) /* EOF (Ctrl+D)*/
 		{
 			free(buffer);
-			return (0);
+			return (last_exit_code);
 		}
 
 		/*If you decide read_and_pars can return 0 on error*/
@@ -35,12 +36,13 @@ int main(void)
 		if (cmd_path != NULL)
 		{
 			args[0] = cmd_path;
-			execute_command(args);
+			last_exit_code = execute_command(args);
 			free(cmd_path);
 		}
 		else
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+			last_exit_code = 127;
 		}
 	}
 }
