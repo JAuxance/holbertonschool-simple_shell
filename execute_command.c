@@ -21,7 +21,7 @@ int execute_command(char *args[])
 	{
 		execve(args[0], args, environ);
 		perror(args[0]);
-		_exit(126);
+		_exit(127);
 	}
 
 	if (waitpid(pid, &wstatus, 0) < 0)
