@@ -1,43 +1,40 @@
 #include "main.h"
 /**
- * read_and_pars - reads a line from stdin and parses it into arguments
+ * read_and_parse - reads a line from stdin and parses it into arguments
  * @buffer: pointer to the buffer to store the input line
  * @n: pointer to the size of the buffer
  * @args: array to store the parsed arguments
  * @is_interactive: flag indicating if the shell is in interactive mode
- *
- * Return: -1 on EOF, 0 on read error, 1 on success
+ * Return: -1 on EOF, 0 on error, 1 on success
  */
 
-int read_and_pars(char **buffer, size_t *n, char *args[], int *is_interactive)
+int read_and_parse(char *buffer, size_t n, char args[], int is_interactive)
 {
-	ssize_t read; /* init READ */
-	char *token;  /* init TOKEN */
-	int i;
+	ssize_t read;
 
 	if (is_interactive)
-	{
-		write(1, "$ ", 2);
-	}
+		write(STDOUT_FILENO, "$ ", 2);
 
-	/*getline read the use input from stdin and store it in buffer */
 	read = getline(buffer, n, stdin);
-	if (read == -1) /* verify getline success*/
-		return (-1); /* end of line leave programme*/
+	if (read == -1)
+		return (-1);
+	/*EOF(Ctrl + D)*/
 
-	if ((*buffer)[read - 1] == '\n') /* replace newline with null terminator */
+	/*remove trailing newline*/
+	if (read > 0 && (buffer)[read - 1] == '\n')
+		(buffer)[read - 1] = '\0';
+
+	/*empty line*/
+	if ((buffer)[0] == '\0')
 	{
-		(*buffer)[read - 1] = '\0';
+		args[0] = NULL;
+		return (1);
 	}
 
-	i = 0; /* new index */
+	/*Subject says: one word, no arguments*/
 
-	token = strtok(*buffer, " "); /* parse first element in buffer*/
-	while (token != NULL && i < 1023) /* parse rest of elements */
-	{
-		args[i++] = token; /* put token elemets in an arrays */
-		token = strtok(NULL, " "); /* continue parsing */
-	}
-	args[i] = NULL; /* null terminate the args array */
-	return (1); /* return success */
+	args[0] = buffer;
+	args[1] = NULL;
+
+	return (1);
 }
