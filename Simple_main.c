@@ -3,36 +3,24 @@
  * main - simple shell main loop
  * Return: 0 on success
  */
-
 int main(void)
 {
 	size_t n = 0;
-	char *buffer = NULL;
-	char *args[1024];
-	int is_interactive = isatty(STDIN_FILENO);
-	int r;
-	char *cmd_path;
-	int last_exit_code = 0;
+	char *buffer = NULL, *args[1024], *cmd_path;
+	int is_interactive = isatty(STDIN_FILENO), r, last_exit_code = 0;
 
 	while (1)
 	{
 		r = read_and_parse(&buffer, &n, args, is_interactive);
-		if (r == -1) /* EOF (Ctrl+D)*/
+		if (r == -1)
 		{
 			free(buffer);
 			return (last_exit_code);
 		}
-		/*If you decide read_and_pars can return 0 on error*/
-		if (r == 0)
+		if (r == 0 || args[0] == NULL)
 			continue;
-		/*Skip empty lines*/
-		if (args[0] == NULL)
+		if (handle_builtins(args, buffer, last_exit_code))
 			continue;
-		if (strcmp(args[0], "exit") == 0 || strcmp(args[0], "EXIT") == 0)
-		{
-			free(buffer);
-			exit(last_exit_code);
-		}
 		cmd_path = find_command_in_path(args[0]);
 		if (cmd_path != NULL)
 		{
