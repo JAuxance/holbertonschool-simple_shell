@@ -28,13 +28,11 @@ int main(void)
 		/*Skip empty lines*/
 		if (args[0] == NULL)
 			continue;
-
-		if (strcmp(args[0], "exit") == 0)
+		if (strcmp(args[0], "exit") == 0 || strcmp(args[0], "EXIT") == 0)
 		{
 			free(buffer);
 			exit(last_exit_code);
 		}
-
 		cmd_path = find_command_in_path(args[0]);
 		if (cmd_path != NULL)
 		{
@@ -43,7 +41,9 @@ int main(void)
 			free(cmd_path);
 		}
 		else
+		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-		last_exit_code = 127;
+			last_exit_code = 127;
+		}
 	}
 }
