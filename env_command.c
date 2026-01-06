@@ -13,10 +13,10 @@ int handle_builtins(char **args, char *buffer, int exit_code, char **envp)
 
 	if (strcmp(args[0], "exit") == 0 || strcmp(args[0], "EXIT") == 0)
 	{
-		free(buffer);
+		free(buffer); /*compare the command with exit or EXIT, if yes free buffer and exit shell*/
 		exit(exit_code);
 	}
-	if (strcmp(args[0], "env") == 0)
+	if (strcmp(args[0], "env") == 0)/*if command = env, loop on all env variables, print one by line*/
 	{
 		for (i = 0; envp[i] != NULL; i++)
 			printf("%s\n", envp[i]);
