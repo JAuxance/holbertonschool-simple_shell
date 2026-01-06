@@ -1,0 +1,161 @@
+.TH SIMPLE_SHELL 1 "January 2026" "Simple Shell" "User Commands"
+
+.SH NAME
+simple_shell \- simplified UNIX command line interpreter
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+.B simple_shell
+is a basic implementation of a UNIX command line interpreter written in C.
+
+The program displays a prompt, reads a command entered by the user, and executes it using the system calls
+.B fork()
+and
+.B execve().
+
+After each command execution, the prompt is displayed again until the user exits the shell or reaches end of file (EOF).
+
+.SH FEATURES
+The following features are implemented:
+
+.IP \[bu] 2
+Display of an interactive prompt
+
+.IP \[bu]
+Read commands from standard input
+
+.IP \[bu]
+Execute commands with arguments
+
+.IP \[bu]
+Search executables using the PATH environment variable
+
+.IP \[bu]
+Pass the environment to
+.B execve()
+
+.IP \[bu]
+Built-in command
+.B exit
+to exit the shell
+
+.IP \[bu]
+Built-in command
+.B env
+to print the current environment
+
+.IP \[bu]
+Error handling
+
+.IP \[bu]
+End of file handling (Ctrl + D)
+
+.IP \[bu]
+No call to
+.B fork()
+if the command does not exist
+
+.SH BUILT-IN COMMANDS
+The following built-in commands are supported:
+
+.TP
+.B exit
+Exits the shell.
+No arguments are supported.
+
+.TP
+.B env
+Prints the current environment variables.
+
+.SH LIMITATIONS
+According to the project requirements, the following features are not supported:
+
+.IP \[bu] 2
+Pipes (\|)
+
+.IP \[bu]
+Redirections (\>, \>\>, \<)
+
+.IP \[bu]
+Command separators (;)
+
+.IP \[bu]
+Quotes and special characters:
+", ', `, \\, *, &, #
+
+.IP \[bu]
+Cursor movement
+
+.IP \[bu]
+Job control (fg, bg)
+
+.IP \[bu]
+Built-in commands other than
+.B exit
+and
+.B env
+
+.SH EXIT STATUS
+.B simple_shell
+returns 0 on success.
+Execution errors are reported through error messages printed to standard error.
+
+.SH EXAMPLES
+Launching the shell:
+
+.nf
+$ ./simple_shell
+$ ls
+$ env
+$ exit
+.fi
+
+Invalid command:
+
+.nf
+$ fake_command
+./simple_shell: 1: fake_command: not found
+.fi
+
+.SH FILES
+.TP
+.I README.md
+Project documentation
+
+.TP
+.I Simple_main.c
+Program entry point and main loop
+
+.TP
+.I read_and_parse.c
+Reading and parsing user input
+
+.TP
+.I find_path.c
+Executable search using PATH
+
+.TP
+.I execute_command.c
+Command execution using fork and execve
+
+.TP
+.I env_command.c
+Implementation of the env built-in command
+
+.TP
+.I main.h
+Function prototypes, macros, and shared structures
+
+.SH AUTHORS
+See the
+.B AUTHORS
+file at the root of the repository.
+
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1)
+
+.SH COPYRIGHT
+Educational project developed as part of the Holberton School.
