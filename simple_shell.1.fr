@@ -1,1 +1,162 @@
-man page fr
+.TH SIMPLE_SHELL 1 "Janvier 2026" "Simple Shell" "Commandes utilisateur"
+
+.SH NOM
+simple_shell \- interpréteur de commandes UNIX simplifié
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+.B simple_shell
+est une implémentation basique d’un interpréteur de commandes UNIX écrite en langage C.
+
+Le programme affiche un prompt, lit une commande saisie par l’utilisateur, puis l’exécute à l’aide des appels système
+.B fork()
+et
+.B execve().
+
+Après l’exécution de chaque commande, le prompt est affiché à nouveau jusqu’à ce que l’utilisateur quitte le shell ou atteigne la fin de fichier (EOF).
+
+.SH FONCTIONNALITÉS
+Les fonctionnalités suivantes sont implémentées :
+
+.IP \[bu] 2
+Affichage d’un prompt interactif
+
+.IP \[bu]
+Lecture des commandes depuis l’entrée standard
+
+.IP \[bu]
+Exécution des commandes avec arguments
+
+.IP \[bu]
+Recherche des exécutables à l’aide de la variable d’environnement PATH
+
+.IP \[bu]
+Transmission de l’environnement à
+.B execve()
+
+.IP \[bu]
+Commande interne
+.B exit
+pour quitter le shell
+
+.IP \[bu]
+Commande interne
+.B env
+pour afficher l’environnement courant
+
+.IP \[bu]
+Gestion des erreurs
+
+.IP \[bu]
+Gestion de la fin de fichier (Ctrl + D)
+
+.IP \[bu]
+Aucun appel à
+.B fork()
+si la commande n’existe pas
+
+.SH COMMANDES INTERNES
+Les commandes internes suivantes sont supportées :
+
+.TP
+.B exit
+Quitte le shell.
+Aucun argument n’est pris en charge.
+
+.TP
+.B env
+Affiche les variables d’environnement courantes.
+
+.SH LIMITATIONS
+Conformément aux consignes du projet, les fonctionnalités suivantes ne sont pas prises en charge :
+
+.IP \[bu] 2
+Pipes (\|)
+
+.IP \[bu]
+Redirections (\>, \>\>, \<)
+
+.IP \[bu]
+Séparateurs de commandes (;)
+
+.IP \[bu]
+Guillemets et caractères spéciaux :
+", ', `, \\, *, &, #
+
+.IP \[bu]
+Déplacement du curseur
+
+.IP \[bu]
+Gestion des tâches (fg, bg)
+
+.IP \[bu]
+Commandes internes autres que
+.B exit
+et
+.B env
+
+.SH CODE DE RETOUR
+.B simple_shell
+retourne 0 en cas de succès.
+Les erreurs d’exécution sont signalées par des messages affichés sur la sortie standard d’erreur.
+
+.SH EXEMPLES
+Lancer le shell :
+
+.nf
+$ ./simple_shell
+$ ls
+$ env
+$ exit
+.fi
+
+Commande inexistante :
+
+.nf
+$ fake_command
+./simple_shell: 1: fake_command: not found
+.fi
+
+.SH FICHIERS
+.TP
+.I README.md
+Documentation du projet
+
+.TP
+.I Simple_main.c
+Point d’entrée du programme et boucle principale
+
+.TP
+.I read_and_parse.c
+Lecture et analyse de l’entrée utilisateur
+
+.TP
+.I find_path.c
+Recherche des exécutables via PATH
+
+.TP
+.I execute_command.c
+Exécution des commandes avec fork et execve
+
+.TP
+.I env_command.c
+Implémentation de la commande interne env
+
+.TP
+.I main.h
+Prototypes, macros et structures partagées
+
+.SH AUTEURS
+Voir le fichier
+.B AUTHORS
+à la racine du dépôt.
+
+.SH VOIR AUSSI
+.BR sh (1),
+.BR bash (1)
+
+.SH COPYRIGHT
+Projet pédagogique réalisé dans le cadre de la Holberton School.
+
