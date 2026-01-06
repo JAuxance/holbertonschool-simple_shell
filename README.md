@@ -1,4 +1,4 @@
-# simple_shell
+# Simple_shell
 
 [![fr](https://img.shields.io/badge/lang-fr-blue.svg)](README.fr.md)                                       
 [![man-page](https://img.shields.io/badge/man%20page-en-red)](man_pages/simple_shell.1.en)
