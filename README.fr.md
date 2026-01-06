@@ -1,1 +1,109 @@
+# simple_shell
+
+[![fr](https://img.shields.io/badge/lang-fr-blue.svg)](README.md)                                       
+[![man-page](https://img.shields.io/badge/man%20page-fr-blue)](man_pages/simple_shell.1.fr)
+
+---
+
+## C’est quoi ?
+
+**Simple Shell** est une implémentation basique d’un interpréteur de commandes UNIX écrite en langage C.  
+Le programme reproduit le comportement minimal d’un shell en affichant un prompt, en lisant l’entrée utilisateur et en exécutant les commandes à l’aide de `fork()` et `execve()`.
+
+Ce projet a pour objectif de mieux comprendre les concepts fondamentaux de la programmation système UNIX tels que la gestion des processus, des variables d’environnement, du PATH et des erreurs.
+
+---
+
+## Fonctionnalités supportées
+
+| Fonctionnalité | Description |
+|---------------|-------------|
+| Prompt interactif | Affiche un prompt et attend une commande utilisateur |
+| Exécution de commandes | Utilise `fork()` et `execve()` |
+| Commandes avec arguments | Gère les arguments passés aux commandes |
+| Gestion du PATH | Recherche les exécutables via la variable PATH |
+| Environnement | Passe `environ` à `execve()` |
+| Built-in `exit` | Quitte le shell |
+| Built-in `env` | Affiche l’environnement courant |
+| Gestion des erreurs | Gère les commandes invalides et erreurs d’exécution |
+| Gestion de l’EOF | Gère `Ctrl + D` (fin de fichier) |
+| Optimisation | `fork()` n’est pas appelé si la commande n’existe pas |
+
+---
+
+## Prérequis
+
+- **OS** : Ubuntu 20.04 LTS
+- **Compilateur** : GCC 9.4.0 ou supérieur
+- **Éditeur** : vi, vim, emacs ou VS Code
+- **Git** : Gestion du versioning
+- **Style** : Code conforme à la norme Betty
+
+---
+
+## Comment compiler ?
+
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o simple_shell
+```
+---
+## Exemples d'utilisation
+```bash
+$ ./simple_shell
+$ ls
+AUTHORS  README.md  simple_shell
+$ pwd
+/home/user/simple_shell
+$ env
+PATH=/usr/bin:/bin
+HOME=/home/user
+$ exit
+```
+---
+## Gestion des erreurs
+
+- Si une commande n’est pas trouvée, un message d’erreur est affiché
+- Le shell continue de fonctionner après une erreur
+- Aucun processus n’est créé si la commande est invalide
+
+Exemple: 
+```bash
+$ wrong_command
+./simple_shell: 1: wrong_command: not found
+```
+
+---
+## Tests avec Valgrind
+Pour vérifier l'absence de fuites mémoire:
+
+```bash
+# Compilation
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -g *.c -o simple_shell
+
+# Lancement de valgrind
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_shell
+```
+## Résultat attendu
+```
+==12345== HEAP SUMMARY:
+==12345==     in use at exit: 0 bytes in 0 blocks
+==12345==   total heap usage: X allocs, X frees, X bytes allocated
+==12345==
+==12345== All heap blocks were freed -- no leaks are possible
+```
+---
+
+##Pages de manuel (man)
+```bash
+# Version anglaise
+man ./man_pages/simple_shell.1.en
+
+# Version française
+man ./man_pages/simple_shell.1.fr
+```
+---
+
+
+
+
 
