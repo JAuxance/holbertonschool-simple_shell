@@ -2,10 +2,11 @@
 /**
  * execute_command - executes a command using fork and execve
  * @args: array of arguments for the command
+ * @envp: environment variables
  * Return: exit status of command or -1 on error
  */
 
-int execute_command(char *args[])
+int execute_command(char *args[], char **envp)
 {
 	pid_t pid;
 	int wstatus;
@@ -19,7 +20,7 @@ int execute_command(char *args[])
 
 	if (pid == 0)
 	{
-		execve(args[0], args, environ);
+		execve(args[0], args, envp);
 		perror(args[0]);
 		_exit(127);
 	}

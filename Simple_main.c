@@ -1,13 +1,19 @@
 #include "main.h"
 /**
  * main - simple shell main loop
- * Return: 0 on success
+ * @ac: argument count (unused)
+ * @av: argument vector (unused)
+ * @envp: environment variables
+ * Return: last command exit code
  */
-int main(void)
+int main(int ac, char **av, char **envp)
 {
 	size_t n = 0;
 	char *buffer = NULL, *args[1024], *cmd_path;
 	int is_interactive = isatty(STDIN_FILENO), r, last_exit_code = 0;
+
+	(void)ac;
+	(void)av;
 
 	while (1)
 	{
@@ -19,13 +25,13 @@ int main(void)
 		}
 		if (r == 0 || args[0] == NULL)
 			continue;
-		if (handle_builtins(args, buffer, last_exit_code))
-			continue;
-		cmd_path = find_command_in_path(args[0]);
+	if (handle_builtins(args, buffer, last_exit_code, envp))
+		continue;
+	cmd_path = find_command_in_path(args[0], envp);
 		if (cmd_path != NULL)
 		{
 			args[0] = cmd_path;
-			last_exit_code = execute_command(args);
+			last_exit_code = execute_command(args, envp);
 			free(cmd_path);
 		}
 		else

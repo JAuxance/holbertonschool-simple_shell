@@ -4,9 +4,10 @@
  * @args: array of arguments
  * @buffer: input buffer to free on exit
  * @exit_code: last command exit code
+ * @envp: environment variables
  * Return: 1 if builtin was executed, 0 otherwise
  */
-int handle_builtins(char **args, char *buffer, int exit_code)
+int handle_builtins(char **args, char *buffer, int exit_code, char **envp)
 {
 	int i;
 
@@ -17,8 +18,8 @@ int handle_builtins(char **args, char *buffer, int exit_code)
 	}
 	if (strcmp(args[0], "env") == 0)
 	{
-		for (i = 0; environ[i] != NULL; i++)
-			printf("%s\n", environ[i]);
+		for (i = 0; envp[i] != NULL; i++)
+			printf("%s\n", envp[i]);
 		return (1);
 	}
 	return (0);

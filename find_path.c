@@ -3,9 +3,10 @@
 /**
 * find_command_in_path - searches for a command in path directories
 * @command: the command name to search for
+* @envp: environment variables
 * Return: full path to command if found, NULL otherwise
 */
-char *find_command_in_path(char *command)
+char *find_command_in_path(char *command, char **envp)
 {
     char *path_env, *path_copy, *dir;
     char *full_path;
@@ -24,11 +25,11 @@ char *find_command_in_path(char *command)
     }
 
     path_env = NULL;
-    for (i = 0; environ[i] != NULL; i++)
+    for (i = 0; envp[i] != NULL; i++)
     {
-        if (strncmp(environ[i], "PATH=", 5) == 0)
+        if (strncmp(envp[i], "PATH=", 5) == 0)
         {
-            path_env = environ[i] + 5;
+            path_env = envp[i] + 5;
             break;
         }
     }
