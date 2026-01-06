@@ -102,6 +102,38 @@ man ./man_pages/simple_shell.1.en
 man ./man_pages/simple_shell.1.fr
 ```
 ---
+## Fichiers du projet
+| Fichier | Description |
+|------|-------------|
+| `Simple_main.c` | Point d’entrée du shell, boucle principale et affichage du prompt |
+| `env_command.c` | Implémentation du built-in `env` | 
+| `execute_command.c` | Création des processus et exécution des commandes avec `fork()` et `execve()` |
+| `find_path.c` | Recherche des exécutables via la variable PATH |
+| `read_and_parse.c` | Lecture de l’entrée utilisateur et découpage de la ligne de commande |
+| `main.h` | Prototypes des fonctions, macros et structures partagées |
+
+---
+## Comment ça fonctionne ? 
+1. Le shell affiche un prompt
+2. Il lit l’entrée utilisateur
+3. La ligne de commande est analysée et découpée
+4. Le PATH est parcouru pour trouver l’exécutable
+5. Si la commande existe :
+6. `fork()` est appelé
+7. `execve()` exécute la commande
+8. Le processus parent attend la fin du processus fils
+9. Le prompt est affiché à nouveau
+
+--- 
+## Auteurs
+
+- Auxance JOURDAN
+- Julien HINLANG
+
+---
+
+*Projet école Holberton*
+
 
 
 
