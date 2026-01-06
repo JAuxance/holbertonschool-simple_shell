@@ -11,8 +11,8 @@
 int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive)
 {
 	ssize_t nread; /* result of getline, number of caracteres or -1 */
-	char *token; /* used by strtok */
-	int i = 0; /* index in args */
+	char *token;   /* used by strtok */
+	int i = 0;	   /* index in args */
 
 	if (is_interactive) /* If you're in a terminal, you display the prompt $ */
 	{
@@ -24,19 +24,20 @@ int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive)
 	{
 		return (-1); /* EOF  or error */
 	}
-
-	if ((*buffer)[nread - 1] == '\n') /* If the last character is a newline character, you replace it with \0*/
-	{								/* line is ready to tokenize*/
+	/* If the last character is a newline character, you replace it with \0*/
+	if ((*buffer)[nread - 1] == '\n')
+	{ /* line is ready to tokenize*/
 		(*buffer)[nread - 1] = '\0';
 	}
-
-	token = strtok(*buffer, " \t");/* cut the string in token with " " & "/t" in separator(/t = tab)*/
+	/* cut the string in token with " " & "/t" in separator(/t = tab)*/
+	token = strtok(*buffer, " \t");
 	while (token != NULL && i < 1023)
 	{
-		args[i++] = token; /* store token in args[i] and move forward*/
+		args[i++] = token;			 /* store token in args[i] and move forward*/
 		token = strtok(NULL, " \t"); /* NULL = continue on the same string */
 	}
-	args[i] = NULL;/* end args by NULL, needed to execve*/
-
-	return (args[0] == NULL ? 0 : 1);/* if args = 0 return 0, nothing to do, 1 command ready and -1 EOF or error*/
+	/* end args by NULL, needed to execve*/
+	args[i] = NULL;
+	/* if args = 0 return 0, nothing to do, 1 command ready and -1 EOF or error*/
+	return (args[0] == NULL ? 0 : 1);
 }
