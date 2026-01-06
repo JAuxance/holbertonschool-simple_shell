@@ -67,11 +67,11 @@ $ exit
 
 ## Error Handling
 
-If a command cannot be found, an error message is displayed
+- If a command cannot be found, an error message is displayed
 
-The shell continues running after an error
+- The shell continues running after an error
 
-No process is created if the command does not exist
+- No process is created if the command does not exist
 
 Example: 
 ```bash
