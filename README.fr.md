@@ -91,11 +91,14 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ```
 ## Résultat attendu
 ```
-==12345== HEAP SUMMARY:
-==12345==     in use at exit: 0 bytes in 0 blocks
-==12345==   total heap usage: X allocs, X frees, X bytes allocated
-==12345==
-==12345== All heap blocks were freed -- no leaks are possible
+==75837== HEAP SUMMARY:
+==75837==     in use at exit: 0 bytes in 0 blocks
+==75837==   total heap usage: 2 allocs, 2 frees, 1,144 bytes allocated
+==75837== 
+==75837== All heap blocks were freed -- no leaks are possible
+==75837== 
+==75837== For lists of detected and suppressed errors, rerun with: -s
+==75837== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 ---
 
