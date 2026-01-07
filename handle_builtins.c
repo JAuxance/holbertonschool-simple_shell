@@ -11,7 +11,7 @@ int handle_builtins(char **args, char *buffer, int exit_code, char **envp)
 {
 	int i;
 
-	if (strcmp(args[0], "exit") == 0 || strcmp(args[0], "EXIT") == 0)
+	if (strcasecmp(args[0], "exit") == 0)
 	{
 		/*compare the command with exit or EXIT, if yes free buffer and exit shell*/
 		free(buffer);
