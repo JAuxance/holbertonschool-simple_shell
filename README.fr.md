@@ -31,6 +31,10 @@ Ce projet a pour objectif de mieux comprendre les concepts fondamentaux de la pr
 
 ---
 
+## Flowchart
+
+![Flowchart du minishell](image/flowchart.svg)
+
 ## Prérequis
 
 - **OS** : Ubuntu 20.04 LTS
