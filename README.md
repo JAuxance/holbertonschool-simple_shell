@@ -29,6 +29,11 @@ This project aims to provide a deeper understanding of UNIX system programming c
 | Optimization | `fork()` is not called if the command does not exist |
 
 ---
+## Flowchart
+
+<img src="image/flowchart.svg" alt="Flowchart" width="1000" height="700">
+
+---
 
 ## Requirements
 
