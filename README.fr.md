@@ -33,7 +33,9 @@ Ce projet a pour objectif de mieux comprendre les concepts fondamentaux de la pr
 
 ## Flowchart
 
-![Flowchart du minishell](image/flowchart.svg)
+<img src="image/flowchart.svg" alt="Flowchart" width="1000" height="700">
+
+---
 
 ## Prérequis
 
