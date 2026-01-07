@@ -34,7 +34,7 @@ int main(int ac, char **av, char **envp)
 			cmd_path = find_command_in_path(command_name, envp);
 			if (cmd_path != NULL)
 			{
-				/* Replace command name with full path (e.g., "ls" -> "/bin/ls") */
+				/* Replace command name with full path "ls" -> "/bin/ls") */
 				args[0] = cmd_path;
 				last_exit_code = execute_command(args, envp);
 				free(cmd_path);
