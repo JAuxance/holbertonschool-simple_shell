@@ -22,7 +22,7 @@ char *find_command_in_path(char *command_name, char **envp)
 	for (i = 0; envp[i] != NULL; i++) /* travel all environment variables */
 		if (strncmp(envp[i], "PATH=", 5) == 0)
 		{
-			path_env = envp[i] + 5; /* path_env point just aafter PATH */
+			path_env = envp[i] + 5; /* path_env point just after PATH */
 			break;
 		}
 	if (path_env == NULL || path_env[0] == '\0')

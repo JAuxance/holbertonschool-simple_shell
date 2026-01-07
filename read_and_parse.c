@@ -22,7 +22,7 @@ int read_and_parse(char **buffer, size_t *n, char *args[], int is_interactive)
 
 	if (nread == -1)
 	{
-		return (-1); /* EOF  or error */
+		return (-1); /* ctrl d = -1 (EOF  or error) */
 	}
 	/* If the last character is a newline character, you replace it with \0*/
 	if ((*buffer)[nread - 1] == '\n')
