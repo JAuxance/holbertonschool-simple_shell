@@ -64,7 +64,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 
 # Debug version with symbols
 debug: CFLAGS += $(DEBUGFLAGS)
-debug: fclean $(NAME)
+debug: fclean $(OBJ_DIR) $(NAME)
 	@echo "$(GREEN)🐛 Debug version compiled with -g flag$(NC)"
 
 # Clean object files
@@ -90,7 +90,7 @@ run: $(NAME)
 # Run with valgrind
 valgrind: debug
 	@echo "$(YELLOW)🔍 Running valgrind memory check...$(NC)"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	@echo "exit" | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 # Show help
 help:
