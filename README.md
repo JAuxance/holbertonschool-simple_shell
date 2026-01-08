@@ -41,7 +41,7 @@ The program reproduces the minimal behavior of a shell by displaying a prompt, r
 ---
 ## Flowchart
 
-<img src="image/flowchart.svg" alt="Flowchart" width="1000" height="700">
+<img src="image/flowchart.svg" alt="Flowchart" width="1120" height="1500">
 
 ---
 
