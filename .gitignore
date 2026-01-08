@@ -1,0 +1,22 @@
+# Object files
+*.o
+obj/
+
+# Executables
+simple_shell
+a.out
+
+# Debug files
+*.dSYM/
+vgcore.*
+
+# Editor files
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
