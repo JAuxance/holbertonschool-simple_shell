@@ -285,13 +285,6 @@ This project is part of the Holberton School curriculum.
 
 ---
 
-## 🙏 Acknowledgments
-
-- Holberton School for the project guidelines
-- The UNIX/Linux community for documentation and inspiration
-
----
-
 **Made with ❤️ by Simple Shell Team**
 
 
