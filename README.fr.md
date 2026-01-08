@@ -298,13 +298,6 @@ Ce projet fait partie du cursus de l'école Holberton School.
 
 ---
 
-## 🙏 Remerciements
-
-- Holberton School pour les directives du projet
-- La communauté UNIX/Linux pour la documentation et l'inspiration
-
----
-
 **Fait avec ❤️ par l'équipe Simple Shell**
 
 
