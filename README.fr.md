@@ -3,7 +3,6 @@
 > Un interpréteur de commandes UNIX minimaliste écrit en C
 
 [![🇬🇧 English](https://img.shields.io/badge/lang-🇬🇧_English-blue.svg)](README.md)
-[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](README.fr.md)
 [![📖 Man Page FR](https://img.shields.io/badge/man_page-🇫🇷_Français-green)](man_pages/simple_shell.1.fr)
 [![C](https://img.shields.io/badge/langage-C-blue.svg)](https://fr.wikipedia.org/wiki/C_(langage))
 
