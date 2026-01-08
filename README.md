@@ -2,8 +2,8 @@
 
 > A minimalist UNIX command line interpreter written in C
 
-[![🇬🇧 English](https://img.shields.io/badge/lang-🇬🇧_English-blue.svg)](README.md)
-[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](holbertonschool-simple_shell/README.fr.md)
+
+[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](README.fr.md)
 [![📖 Man Page EN](https://img.shields.io/badge/man_page-🇬🇧_English-green)](man_pages/simple_shell.1.en)
 [![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
