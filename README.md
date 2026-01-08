@@ -1,4 +1,4 @@
-# 🐚 Simple Shell
+# 💻 Simple Shell
 
 > A minimalist UNIX command line interpreter written in C
 
@@ -10,33 +10,33 @@
 
 ---
 
-## 📌 What is it?
+##  What is it?
 
 **Simple Shell** is a basic implementation of a UNIX command line interpreter written in C.  
 The program reproduces the minimal behavior of a shell by displaying a prompt, reading user input, and executing commands using `fork()` and `execve()`.
 
-🎯 This project aims to provide a deeper understanding of UNIX system programming concepts such as:
-- 🔄 Process management (`fork()`, `execve()`, `wait()`)
-- 🌍 Environment variables handling
-- 🔍 PATH resolution and command search
-- ⚠️ Error management and signal handling
+This project aims to provide a deeper understanding of UNIX system programming concepts such as:
+-  Process management (`fork()`, `execve()`, `wait()`)
+-  Environment variables handling
+-  PATH resolution and command search
+-  Error management and signal handling
 
 ---
 
-## ✨ Supported Features
+## Supported Features
 
 | Feature | Description | Status |
 |---------|-------------|--------|
-| 💬 Interactive prompt | Displays a prompt and waits for user input | ✅ |
-| ⚙️ Command execution | Uses `fork()` and `execve()` | ✅ |
-| 📝 Commands with arguments | Handles arguments passed to commands | ✅ |
-| 🔍 PATH handling | Searches executables using the PATH variable | ✅ |
-| 🌍 Environment | Passes `environ` to `execve()` | ✅ |
-| 🚪 Built-in `exit` | Exits the shell | ✅ |
-| 📋 Built-in `env` | Prints the current environment | ✅ |
-| ⚠️ Error handling | Handles invalid commands and execution errors | ✅ |
-| 📄 EOF handling | Handles `Ctrl + D` (end of file) | ✅ |
-| 🚀 Optimization | `fork()` is not called if the command does not exist | ✅ |
+| Interactive prompt | Displays a prompt and waits for user input |
+| Command execution | Uses `fork()` and `execve()` |
+| Commands with arguments | Handles arguments passed to commands |
+| PATH handling | Searches executables using the PATH variable |
+| Environment | Passes `environ` to `execve()` |
+| Built-in `exit` | Exits the shell |
+| Built-in `env` | Prints the current environment |
+| Error handling | Handles invalid commands and execution errors |
+| EOF handling | Handles `Ctrl + D` (end of file) |
+| Optimization | `fork()` is not called if the command does not exist |
 
 ---
 ## Flowchart
@@ -45,17 +45,17 @@ The program reproduces the minimal behavior of a shell by displaying a prompt, r
 
 ---
 
-## 📋 Requirements
+## Requirements
 
-- **OS**: Ubuntu 20.04 LTS 🐧
+- **OS**: Ubuntu 20.04 LTS
 - **Compiler**: GCC 9.4.0 or higher
 - **Editor**: vi, vim, emacs, or VS Code
 - **Git**: Version control system
-- **Style**: Code compliant with the Betty style guide ✨
+- **Style**: Code compliant with the Betty style guide
 
 ---
 
-## 🛠️ How to Compile
+## How to Compile
 
 ### Using Makefile (Recommended)
 
@@ -93,7 +93,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Iinclude src/*.c -o simple_shell
 
 ---
 
-## 🚀 Usage Examples
+## Usage Examples
 
 ### Starting the Shell
 
@@ -136,11 +136,11 @@ $ exit
 ```
 ---
 
-## ⚠️ Error Handling
+## Error Handling
 
-- ❌ If a command cannot be found, an error message is displayed
-- 🔄 The shell continues running after an error
-- 🚫 No process is created if the command does not exist
+- If a command cannot be found, an error message is displayed
+- The shell continues running after an error
+- No process is created if the command does not exist
 
 ### Example: 
 ```bash
@@ -155,7 +155,7 @@ $ exit
 ```
 ---
 
-## 🔍 Valgrind Tests
+## Valgrind Tests
 
 To check for memory leaks:
 
@@ -168,7 +168,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -g -Iinclude src/*.c -o simple_sh
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_shell
 ```
 
-### Expected result (no leaks) ✅
+### Expected result (no leaks)
 
 ```
 ==75837== HEAP SUMMARY:
@@ -182,7 +182,7 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ```
 
 ---
-## 🧹 Betty
+## Betty
 The minishell project complies with the **Betty coding standard**.
 
 👉 [Betty Coding Style](https://github.com/holbertonschool/Betty)
@@ -194,38 +194,38 @@ The minishell project complies with the **Betty coding standard**.
 ```
 holbertonschool-simple_shell/
 │
-├── 📁 src/                    # Source files (.c)
+├── src/                    # Source files (.c)
 │   ├── Simple_main.c          # Main entry point
 │   ├── read_and_parse.c       # Input reading and parsing
 │   ├── execute_command.c      # Command execution with fork/execve
 │   ├── find_path.c            # PATH resolution
 │   └── handle_builtins.c      # Built-in commands (exit, env)
 │
-├── 📁 include/                # Header files (.h)
+├── include/                # Header files (.h)
 │   └── main.h                 # Function prototypes and declarations
 │
-├── 📁 obj/                    # Object files (auto-generated)
+├── obj/                    # Object files (auto-generated)
 │   └── *.o                    # Compiled object files
 │
-├── 📁 tests/                  # Test scripts
+├── tests/                  # Test scripts
 │   └── test_shell.sh          # Automated test script
 │
-├── 📁 man_pages/              # Manual pages
+├── man_pages/              # Manual pages
 │   ├── simple_shell.1.en      # English manual page
 │   └── simple_shell.1.fr      # French manual page
 │
-├── 📁 concept_exo/            # Concept exercises and examples
+├── concept_exo/            # Concept exercises and examples
 │   └── ...
 │
-├── 🛠️ Makefile               # Build automation
-├── 📖 README.md               # English documentation (this file)
-├── 📖 README.fr.md            # French documentation
-└── 📋 AUTHORS                 # Project contributors
+├── Makefile               # Build automation
+├── README.md               # English documentation (this file)
+├── README.fr.md            # French documentation
+└── AUTHORS                 # Project contributors
 ```
 
 ---
 
-## 📖 Man Pages
+## Man Pages
 
 Access the manual pages:
 
@@ -239,22 +239,22 @@ man ./man_pages/simple_shell.1.fr
 
 ---
 
-## 🎓 Learning Objectives
+## Learning Objectives
 
 After completing this project, you should be able to explain:
 
-- ✅ What is a shell and how it works
-- ✅ The difference between a function and a system call
-- ✅ How to create processes with `fork()`
-- ✅ How to execute programs with the `execve()` family
-- ✅ How to wait for a child process with `wait()`
-- ✅ What is the environment and how to access it
-- ✅ How to handle the PATH variable
-- ✅ How to implement built-in commands
+- What is a shell and how it works
+- The difference between a function and a system call
+- How to create processes with `fork()`
+- How to execute programs with the `execve()` family
+- How to wait for a child process with `wait()`
+- What is the environment and how to access it
+- How to handle the PATH variable
+- How to implement built-in commands
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 Run the automated test suite:
 
@@ -276,12 +276,12 @@ The test script will verify:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to:
-- 🐛 Report bugs
-- 💡 Suggest new features
-- 🔧 Submit pull requests
+- Report bugs
+- Suggest new features
+- Submit pull requests
 
 ---
 
@@ -291,7 +291,7 @@ See the [AUTHORS](AUTHORS) file for the list of contributors to this project.
 
 ---
 
-**Made with ❤️ by Auxance and Julien**
+**Made with ❤️ passion by Auxance and Julien**
 
 
 
