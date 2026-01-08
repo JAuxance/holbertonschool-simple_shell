@@ -291,7 +291,7 @@ See the [AUTHORS](AUTHORS) file for the list of contributors to this project.
 
 ---
 
-**Made with ❤️ passion by Auxance and Julien**
+**Made with passion ❤️ by Auxance and Julien**
 
 
 
