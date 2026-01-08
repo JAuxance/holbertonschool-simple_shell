@@ -180,6 +180,12 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ==75837== For lists of detected and suppressed errors, rerun with: -s
 ==75837== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
+---
+## 🧹 Betty
+
+Le projet minishell respecte la norme de code **Betty**.  
+👉 [Betty Coding Style](https://github.com/holbertonschool/Betty)
+
 
 ---
 
