@@ -2,8 +2,8 @@
 
 > A minimalist UNIX command line interpreter written in C
 
-[![🇬🇧 English](https://img.shields.io/badge/lang-🇬🇧_English-blue.svg)](README.md)
-[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](holbertonschool-simple_shell/README.fr.md)
+
+[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](README.fr.md)
 [![📖 Man Page EN](https://img.shields.io/badge/man_page-🇬🇧_English-green)](man_pages/simple_shell.1.en)
 [![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
@@ -166,13 +166,14 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ### Expected result (no leaks) ✅
 
 ```
-==12345== HEAP SUMMARY:
-==12345==     in use at exit: 0 bytes in 0 blocks
-==12345==   total heap usage: X allocs, X frees, X bytes allocated
-==12345==
-==12345== All heap blocks were freed -- no leaks are possible
-==12345==
-==12345== ERROR SUMMARY: 0 errors from 0 contexts
+==75837== HEAP SUMMARY:
+==75837==     in use at exit: 0 bytes in 0 blocks
+==75837==   total heap usage: 2 allocs, 2 frees, 1,144 bytes allocated
+==75837== 
+==75837== All heap blocks were freed -- no leaks are possible
+==75837== 
+==75837== For lists of detected and suppressed errors, rerun with: -s
+==75837== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 
 ---
@@ -282,13 +283,6 @@ See the [AUTHORS](AUTHORS) file for the list of contributors to this project.
 ## 📜 License
 
 This project is part of the Holberton School curriculum.
-
----
-
-## 🙏 Acknowledgments
-
-- Holberton School for the project guidelines
-- The UNIX/Linux community for documentation and inspiration
 
 ---
 

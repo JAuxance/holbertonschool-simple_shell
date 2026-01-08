@@ -3,7 +3,6 @@
 > Un interpréteur de commandes UNIX minimaliste écrit en C
 
 [![🇬🇧 English](https://img.shields.io/badge/lang-🇬🇧_English-blue.svg)](README.md)
-[![🇫🇷 Français](https://img.shields.io/badge/lang-🇫🇷_Français-red.svg)](README.fr.md)
 [![📖 Man Page FR](https://img.shields.io/badge/man_page-🇫🇷_Français-green)](man_pages/simple_shell.1.fr)
 [![C](https://img.shields.io/badge/langage-C-blue.svg)](https://fr.wikipedia.org/wiki/C_(langage))
 
@@ -166,13 +165,14 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ### Résultat attendu (pas de fuites) ✅
 
 ```
-==12345== HEAP SUMMARY:
-==12345==     in use at exit: 0 bytes in 0 blocks
-==12345==   total heap usage: X allocs, X frees, X bytes allocated
-==12345==
-==12345== All heap blocks were freed -- no leaks are possible
-==12345==
-==12345== ERROR SUMMARY: 0 errors from 0 contexts
+==75837== HEAP SUMMARY:
+==75837==     in use at exit: 0 bytes in 0 blocks
+==75837==   total heap usage: 2 allocs, 2 frees, 1,144 bytes allocated
+==75837== 
+==75837== All heap blocks were freed -- no leaks are possible
+==75837== 
+==75837== For lists of detected and suppressed errors, rerun with: -s
+==75837== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 
 ---
@@ -296,13 +296,6 @@ Voir le fichier [AUTHORS](AUTHORS) pour la liste des contributeurs à ce projet.
 ## 📜 Licence
 
 Ce projet fait partie du cursus de l'école Holberton School.
-
----
-
-## 🙏 Remerciements
-
-- Holberton School pour les directives du projet
-- La communauté UNIX/Linux pour la documentation et l'inspiration
 
 ---
 
