@@ -183,7 +183,9 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./simple_sh
 ---
 ## 🧹 Betty
 
-Le projet minishell respecte la norme de code **Betty**.  
+Le projet minishell respecte la norme de code **Betty**. 
+
+
 👉 [Betty Coding Style](https://github.com/holbertonschool/Betty)
 
 
@@ -305,13 +307,7 @@ Voir le fichier [AUTHORS](AUTHORS) pour la liste des contributeurs à ce projet.
 
 ---
 
-## 📜 Licence
-
-Ce projet fait partie du cursus de l'école Holberton School.
-
----
-
-**Fait avec ❤️ par l'équipe Simple Shell**
+**Fait avec ❤️ par Auxance et Julien**
 
 
 
