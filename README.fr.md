@@ -38,6 +38,12 @@ Le programme reproduit le comportement minimal d'un shell en affichant un prompt
 
 ---
 
+## Flowchart
+
+<img src="image/flowchart.svg" alt="Flowchart" width="1120" height="1500">
+
+---
+
 ## 📋 Prérequis
 
 - **OS** : Ubuntu 20.04 LTS 🐧
